@@ -12,7 +12,18 @@ MyGet<br>([gallery](https://dotnet.myget.org/gallery/rx)) | ![#](https://img.shi
 Catch us in the #rxnet channel over at http://reactiveui.net/slack
 
 ### Get nightly builds
-- NuGet v3 feed url (VS 2015+): `https://dotnet.myget.org/F/rx/api/v3/index.json`
+- NuGet v3 feed url (VS 2015+): `https://pkgs.dev.azure.com/dotnet/Rx.NET/_packaging/RxNet/nuget/v3/index.json`
+
+## System.Linq.Async / System.Interactive.Async / System.Interactive
+
+### v4.0 changes
+
+Ix Async 4.0 has a breaking change from prior versions due to being the first LINQ implementation
+to support the new C# 8 [async streams](https://github.com/dotnet/roslyn/blob/master/docs/features/async-streams.md) feature. This means for .NET Standard 2.1 and .NET Core 3 targets, we use the in-box interfaces for `IAsyncEnumerable<T>` and friends. On other platforms, we provide the implementation, so you can use `await foreach` and create async iterators as you would expect. The types will unify to the system ones where the platform provides it.
+
+There are many breaking changes here; a full set of changenotes is on the way.
+
+## System.Reactive
 
 ### v4.0 changes
 Due to the [overwhelming](https://github.com/dotnet/reactive/issues/299) [pain](https://github.com/dotnet/reactive/issues/305) that fixing [#205 - Implement assembly version strategy](https://github.com/dotnet/reactive/issues/205) caused, we have refactored the libraries into a single library `System.Reactive`. To prevent breaking existing code that references the v3 libraries, we have facades with TypeForwarders to the new assembly. If you have a reference to a binary built against v3.0, then use the new `System.Reactive.Compatibility` package. 
@@ -67,7 +78,7 @@ Rx complements and interoperates smoothly with both synchronous data streams (`I
    </tr>
 </table>
 
-Additional documentation, video, tutorials and HOL are available on MSDN.
+Additional documentation, video, tutorials and HOL are available on [MSDN](https://docs.microsoft.com/en-us/previous-versions/dotnet/reactive-extensions/hh242985(v=vs.103)), on [*Introduction to Rx*](http://introtorx.com/), [*ReactiveX*](http://reactivex.io/), and [ReactiveUI](https://reactiveui.net/).
 
 Flavors of Rx
 ---------------
@@ -78,7 +89,7 @@ Flavors of Rx
 * [RxScala](https://github.com/ReactiveX/RxScala): Reactive Extensions for Scala – a library for composing asynchronous and event-based programs using observable sequences
 * [RxCpp](https://github.com/Reactive-Extensions/RxCpp): The Reactive Extensions for Native (RxCpp) is a library for composing asynchronous and event-based programs using observable sequences and LINQ-style query operators in both C and C++.
 * [Rx.rb](http://rxrb.codeplex.com): A prototype implementation of Reactive Extensions for Ruby (Rx.rb).
-* [RxPy](https://github.com/Reactive-Extensions/RxPy): The Reactive Extensions for Python 3 (Rx.Py) is a set of libraries to compose asynchronous and event-based programs using observable collections and LINQ-style query operators in Python 3.
+* [RxPy](https://github.com/ReactiveX/RxPY): The Reactive Extensions for Python 3 (Rx.Py) is a set of libraries to compose asynchronous and event-based programs using observable collections and LINQ-style query operators in Python 3.
 
 
 Interactive Extensions
@@ -97,7 +108,7 @@ Contributing
 
 ### Source code
 
-* Clone the sources: `git clone https://github.com/dotnet/reactive.git`
+* Clone the sources: `git clone https://github.com/dotnet/reactive`
 * [Building, testing and debugging the sources](https://github.com/dotnet/reactive/wiki/Building%20Testing%20and%20Debugging)
 
 ### Contribute!
@@ -131,6 +142,18 @@ System.Reactive is part of the [.NET Foundation](https://www.dotnetfoundation.or
         <br>
         <a href="https://github.com/onovotny">Oren Novotny</a>
         <p>New York, USA</p>
+      </td>
+      <td align="center" valign="top">
+        <img width="150" height="150" src="https://github.com/akarnokd.png?s=150">
+        <br>
+        <a href="https://github.com/akarnokd">David Karnok</a>
+        <p>Budapest, Hungary</p>
+      </td>
+      <td align="center" valign="top">
+        <img width="150" height="150" src="https://github.com/danielcweber.png?s=150">
+        <br>
+        <a href="https://github.com/danielcweber">Daniel C. Weber</a>
+        <p>Aachen, Germany</p>
       </td>
      </tr>
   </tbody>
